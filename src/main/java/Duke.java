@@ -38,8 +38,9 @@ public class Duke {
                     System.out.print(taskList.get(i) + "\n");
                 }
             } else if (input.contains("done")) {   //marks the task specified as done
-                int idx = Character.getNumericValue(input.charAt(5));
-                doneList.set( (idx-1), true);
+                int idx = Character.getNumericValue(input.charAt(5)) - 1;
+                doneList.set( idx, true);
+                System.out.println( "Nice! I've marked this task as done:\n\t [✓] " + taskList.get(idx));
             } else {  //adds the task typed out into the list
                 taskList.add(input);
                 doneList.add(false);
