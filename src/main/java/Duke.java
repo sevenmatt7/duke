@@ -30,9 +30,23 @@ public class Duke {
                 taskList.get(idx).setDone();
                 System.out.println( "Nice! I've marked this task as done:\n\t" + taskList.get(idx).toString());
             } else {  //adds the task typed out into the list
-                Task newTask = new Task(input);
-                taskList.add(newTask);
-                System.out.println("added: " + input);
+                if (input.startsWith("todo")){
+                    TodoTask newTask = new TodoTask(input.substring(5));
+                    taskList.add(newTask);
+                    System.out.println("added: " + newTask.toString());
+//                } else if (input.startsWith("deadline")) {
+//                    String data = input.substring(9);
+//                    String[] tokens =  data.split("/by");
+//                    Deadline newTask = new Deadline(tokens[0], tokens[1]);
+//                    taskList.add(newTask);
+//                    System.out.println("added: " + newTask.toString());
+                } else if (input.startsWith("event")) {
+                    String data = input.substring(6);
+                    String[] tokens = data.split("/");
+                    Event newTask = new Event(tokens[0], tokens[1].substring(2));
+                    taskList.add(newTask);
+                    System.out.println("added: " + newTask.toString());
+                }
             }
         }
         System.out.println(goodbye);
