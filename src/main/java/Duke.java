@@ -59,6 +59,9 @@ public class Duke {
                         System.out.println("added: " + newTask.toString());
                     }
                 }
+                else {
+                    System.out.println("OOPS!! I don't know what that means!");
+                }
             }
         }
         System.out.println(goodbye);
