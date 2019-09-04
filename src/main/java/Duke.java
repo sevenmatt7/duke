@@ -1,10 +1,14 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 
 public class Duke {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ArrayList<Task> taskList = new ArrayList<Task>();
 
         String greeting = "Hello I'm Duke \nWhat can I do for you?";
@@ -15,6 +19,12 @@ public class Duke {
 
         while (!input.equals("bye")) {  //while the input is not bye
             input = reader.nextLine();
+            FileWriter fw = new FileWriter("Tasks.txt");
+            Writer output = new BufferedWriter(fw);
+            for (Task task : taskList) {
+                output.write(task.toString() + "\n");
+            }
+            output.close();
 
             if (input.equals("bye")) { //terminates the whole program
                 break;
