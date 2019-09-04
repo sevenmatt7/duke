@@ -68,8 +68,11 @@ public class Duke {
                         taskList.add(newTask);
                         System.out.println("added: " + newTask.toString());
                     }
-                }
-                else {
+                } else if (input.startsWith("delete")) {
+                    int idx = Character.getNumericValue(input.charAt(7)) - 1;
+                    System.out.println( "Noted. I've removed this task:\n\t" + taskList.get(idx).toString());
+                    taskList.remove(idx);
+                } else {
                     System.out.println("OOPS!! I don't know what that means!");
                 }
             }
