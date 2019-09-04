@@ -72,6 +72,24 @@ public class Duke {
                     int idx = Character.getNumericValue(input.charAt(7)) - 1;
                     System.out.println( "Noted. I've removed this task:\n\t" + taskList.get(idx).toString());
                     taskList.remove(idx);
+                } else if (input.startsWith("find")) { //finds the tasks containing the search word
+                    ArrayList<String> foundList = new ArrayList<String>();
+                    String searchTerm = input.substring(5);
+                    int idx = 1;
+                    for (Task task : taskList) {
+                        if (task.toString().contains(searchTerm)) {
+                            foundList.add(task.toString());
+                        }
+                    }
+                    if (foundList.isEmpty()) {
+                        System.out.println("I could not find any matching tasks.");
+                    } else {
+                        System.out.println("Here are the matching tasks in your list:\n");
+                        for (String str : foundList) {
+                            System.out.println(idx + ". " + str);
+                            idx += 1;
+                        }
+                    }
                 } else {
                     System.out.println("OOPS!! I don't know what that means!");
                 }
