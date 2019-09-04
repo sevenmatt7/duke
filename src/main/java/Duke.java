@@ -1,23 +1,15 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class Duke {
 
     public static void main(String[] args) {
-//        String logo = " ____        _        \n"
-//                + "|  _ \\ _   _| | _____ \n"
-//                + "| | | | | | | |/ / _ \\\n"
-//                + "| |_| | |_| |   <  __/\n"
-//                + "|____/ \\__,_|_|\\_\\___|\n";
-
-        ArrayList<String> taskList = new ArrayList<>(100);
-        ArrayList<Boolean> doneList = new ArrayList<>(100);
+        ArrayList<Task> taskList = new ArrayList<Task>(100);
 
         String greeting = "Hello I'm Duke \nWhat can I do for you?";
         String goodbye = "Bye. Hope to see you again soon!";
-//        System.out.println("Hello from\n" + logo);
         System.out.println(greeting);
-
         String input = "0";
         Scanner reader = new Scanner(System.in);  // Reading from System.in
 
@@ -28,22 +20,18 @@ public class Duke {
                 break;
             } else if (input.equals("list")) {  //prints out the whole list of tasks
                 System.out.println("Here are the tasks in your list: ");
-                for (int i = 0; i < taskList.size(); i++) {
-                    System.out.print( (i+1) + "." );
-                    if (doneList.get(i)) {
-                        System.out.print("[✓] ");
-                    } else {
-                        System.out.print("[X] ");
-                    }
-                    System.out.print(taskList.get(i) + "\n");
+                int idx = 1;
+                for (Task task : taskList) {
+                    System.out.println(idx + ". " + task.toString());
+                    idx += 1;
                 }
             } else if (input.contains("done")) {   //marks the task specified as done
                 int idx = Character.getNumericValue(input.charAt(5)) - 1;
-                doneList.set( idx, true);
-                System.out.println( "Nice! I've marked this task as done:\n\t [✓] " + taskList.get(idx));
+                taskList.get(idx).setDone();
+                System.out.println( "Nice! I've marked this task as done:\n\t" + taskList.get(idx).toString());
             } else {  //adds the task typed out into the list
-                taskList.add(input);
-                doneList.add(false);
+                Task newTask = new Task(input);
+                taskList.add(newTask);
                 System.out.println("added: " + input);
             }
         }
