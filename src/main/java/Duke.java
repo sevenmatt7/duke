@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 
 public class Duke {
+    private boolean isExit = false;
 //    private Storage storage;
 //    private TaskList tasks;
 //    private Ui ui;
@@ -22,14 +23,28 @@ public class Duke {
 //        }
 //    }
 //
-//    public void run() {
-//        //...
-//    }
-//
+    public void setExit() {
+        this.isExit = true;
+    }
+
+    public void run() {
+        Ui.welcome();
+        while(!isExit) {
+            String userInput = Ui.readCommand();
+            Parser.
+        }
+        Ui.exit();
+
+
+    }
+
 //    public static void main(String[] args) {
 //        new Duke("Tasks.txt").run();
 //    }
 //}
+
+
+
 
 
     public static void main(String[] args) throws IOException {
@@ -76,6 +91,7 @@ public class Duke {
                         taskList.add(newTask);
                         System.out.println("added: " + newTask.toString());
                     }
+
                 } else if (input.startsWith("deadline")) {
                     String data = input.substring(9);
                     String[] tokens =  data.split("/by");
