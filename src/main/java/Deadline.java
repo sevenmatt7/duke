@@ -6,9 +6,17 @@ public class Deadline extends Task {
 
     private Date dateTime;
 
-    public Deadline(String description, Date dateTime) {
+    public Deadline(String description, String date_string) {
         super(description);
-        this.dateTime = dateTime;
+        try {
+            //The code you are trying to exception handle
+            this.dateTime = DATE_FORMAT.parse(date_string);
+        }
+        catch (Exception e) {
+            //The handling for the code
+            System.out.println("Wrong date format.");
+        }
+
     }
 
     @Override

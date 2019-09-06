@@ -76,12 +76,12 @@ public class Duke {
                         taskList.add(newTask);
                         System.out.println("added: " + newTask.toString());
                     }
-//                } else if (input.startsWith("deadline")) {
-//                    String data = input.substring(9);
-//                    String[] tokens =  data.split("/by");
-//                    Deadline newTask = new Deadline(tokens[0], tokens[1]);
-//                    taskList.add(newTask);
-//                    System.out.println("added: " + newTask.toString());
+                } else if (input.startsWith("deadline")) {
+                    String data = input.substring(9);
+                    String[] tokens =  data.split("/by");
+                    Deadline newTask = new Deadline(tokens[0], tokens[1]);
+                    taskList.add(newTask);
+                    System.out.println("added: " + newTask.toString());
                 } else if (input.startsWith("event")) {
                     if (input.length() == 5) {
                         System.out.println("OOPS!! You did not write down the activity for the event!");
