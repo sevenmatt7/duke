@@ -5,11 +5,10 @@ import java.io.Writer;
 
 public class Storage {
 
-    public Storage (String filePath, TaskList taskList) throws IOException {
+    public Storage (String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         Writer output = new BufferedWriter(fw);
 //
-
         output.close();
     }
 
