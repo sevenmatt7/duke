@@ -1,10 +1,11 @@
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
 
 public class DukeTest {
     @Test
     public void dummyTest(){
         assertEquals(2, 2);
+    }
+
+    private void assertEquals(int i, int i1) {
     }
 }
