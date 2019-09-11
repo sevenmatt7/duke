@@ -1,1 +1,2 @@
-[T][?] write task
+[T][✘] event
+[D][✘] meet (by: 12/2/2019 1200)

@@ -1,6 +1,12 @@
+import java.text.ParseException;
+
 public class Parser {
 
-    public static void interpretCommand(String input) {
+    /**
+     * Interprets and parses the user input.
+     * @param input Contains the raw string entered by the user.
+     */
+    public static void interpretCommand(String input) throws ParseException {
         if (input.equals("bye")) {  //terminates the program
             Duke.setExit();
         } else if (input.equals("list")) {  //prints out the whole list of tasks

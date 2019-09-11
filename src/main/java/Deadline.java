@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -6,15 +7,15 @@ public class Deadline extends Task {
 
     private Date dateTime;
 
-    public Deadline(String description, String date_string) {
+    public Deadline(String description, String date_string) throws ParseException {
         super(description);
         try {
-            //The code you are trying to exception handle
             this.dateTime = dateFormatter.parse(date_string);
         }
-        catch (Exception e) {
-            //The handling for the code
-            System.out.println("Wrong date format.");
+        catch (Exception e)  {
+            System.out.println("Wrong date format. Please write it in the format dd/mm/yy HHmm");
+            String correctInput = Ui.readCommand();
+            this.dateTime = dateFormatter.parse(correctInput);
         }
 
     }

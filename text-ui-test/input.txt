@@ -1,14 +1,1 @@
-todo get things
-event go to class /at 1200hrs
-event go to movies /at 25/06/2019 2-4pm
-deadline do assignment /by 1/12/2019 1200
-list
-done 1
-list
-find class
-find classes
-delete 1
-delete 1
-list
-what
 bye
