@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Deadline extends Task {
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("d/M/yyyy HHmm");
+    private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("d/M/yyyy HHmm");
 
     private Date dateTime;
 
@@ -10,7 +10,7 @@ public class Deadline extends Task {
         super(description);
         try {
             //The code you are trying to exception handle
-            this.dateTime = DATE_FORMAT.parse(date_string);
+            this.dateTime = dateFormatter.parse(date_string);
         }
         catch (Exception e) {
             //The handling for the code
@@ -21,14 +21,14 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return String.format("[D]%s(by: %s)", super.toString(), DATE_FORMAT.format(dateTime));
+        return String.format("[D]%s(by: %s)", super.toString(), dateFormatter.format(dateTime));
     }
 
 
     @Override
     public String formatString() {
         return String.format(
-                "D|%s|%s", super.formatString(), DATE_FORMAT.format(dateTime));
+                "D|%s|%s", super.formatString(), dateFormatter.format(dateTime));
     }
 
 }

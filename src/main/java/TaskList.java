@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -6,6 +10,15 @@ public class TaskList {
      public TaskList() {
          this.taskList = new ArrayList<Task>();
      }
+
+    public static void writetoFile (String filePath, TaskList tasks) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        Writer output = new BufferedWriter(fw);
+        for (Task task : taskList) {
+            output.write(task.toString() + "\n");
+        }
+        output.close();
+    }
 
      public static void getList() {
          if (taskList.isEmpty()) {
@@ -51,8 +64,8 @@ public class TaskList {
          if (input.length() == 0) {
              System.out.println("OOPS!! You did not write the task that needs to be finished by the deadline!");
          } else {
-             String[] tokens = input.split("/");
-             Deadline newTask = new Deadline(tokens[0], tokens[1].substring(2));
+             String[] tokens = input.split("/by");
+             Deadline newTask = new Deadline(tokens[0], tokens[1]);
              taskList.add(newTask);
              System.out.println("added: " + newTask.toString());
          }
@@ -80,7 +93,6 @@ public class TaskList {
                  idx += 1;
              }
          }
-
      }
 
 }

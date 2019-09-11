@@ -5,40 +5,49 @@ import java.io.Writer;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
+/**
+ * The Duke program implements an application that
+ * acts as a personal assistant with the ability to
+ * store tasks in a list that is kept as a text file
+ *
+ * @author  Matthew Nathanael Sugiri
+ * @version 1.0
+ * @since   2019-08-21
+ */
 public class Duke {
     public static boolean isExit = false;
     private Storage storage;
-    private TaskList tasks;
+    private static TaskList tasks;
     private Ui ui;
 
-    public Duke(String filePath) throws IOException {  //constructor for the Duke Object
+    public Duke() throws IOException {  //constructor for the Duke Object
         ui = new Ui();
-        storage = new Storage(filePath);
+        tasks = new TaskList();
 //        try {
-            tasks = new TaskList();
+//            tasks = new TaskList();
 //        } catch (DukeException e) {
 //            ui.showLoadingError();
 //            tasks = new TaskList();
 //        }
-
     }
 
     public static void setExit() {
         isExit = true;
     }
 
-    public void run() {
+    public void run (String filePath, TaskList tasks) throws IOException {
         Ui.welcome();
         while(!isExit) {
             String userInput = Ui.readCommand();
             Parser.interpretCommand(userInput);
+            TaskList.writetoFile(filePath, Duke.tasks);
         }
+        TaskList.writetoFile(filePath, Duke.tasks);
         Ui.exit();
     }
 
     public static void main(String[] args) throws IOException {
-        new Duke("Tasks.txt").run();
+        new Duke().run("Tasks.txt", tasks);
     }
 //    public static void main(String[] args) throws IOException {
 //        ArrayList<Task> taskList = new ArrayList<Task>();
@@ -130,5 +139,6 @@ public class Duke {
 //        }
 //        System.out.println(goodbye);
 //    }
+
 
 }
